@@ -11,6 +11,8 @@ import yanwtedemo.services.spi.NumberProcessor;
  */
 @RestController
 public class DemoController {
+    // the bean name must be the pattern [beanNameForInterface] + "Provider"
+    // otherwise there will be too many beans matching this type
     @AutowireProvider
     private NumberProcessor numberProcessorProvider;
 
