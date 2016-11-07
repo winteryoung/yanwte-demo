@@ -1,6 +1,7 @@
 package yanwtedemo.services.impl.odd;
 
 import org.springframework.stereotype.Component;
+import yanwtedemo.services.spi.NumberFormatter;
 import yanwtedemo.services.spi.NumberProcessor;
 
 /**
@@ -8,7 +9,7 @@ import yanwtedemo.services.spi.NumberProcessor;
  * @since 2016/10/23
  */
 @Component
-public class OddNumberProcessor implements NumberProcessor {
+public class OddNumberProcessor implements NumberProcessor, NumberFormatter {
     @Override
     public Integer processInt(Integer i) {
         if (i != null && i % 2 != 0) {
@@ -16,6 +17,14 @@ public class OddNumberProcessor implements NumberProcessor {
         }
 
         // we cannot deal with it, let others do the work
+        return null;
+    }
+
+    @Override
+    public String format(Integer num) {
+        if (num != null && num % 2 != 0) {
+            return "Odd " + num;
+        }
         return null;
     }
 }

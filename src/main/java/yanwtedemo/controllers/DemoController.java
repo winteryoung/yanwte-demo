@@ -4,6 +4,7 @@ import com.github.winteryoung.yanwte.spring.AutowireProvider;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import yanwtedemo.services.spi.NumberProcessor;
+import yanwtedemo.services.spi.NumberFormatter;
 
 /**
  * @author Winter Young
@@ -16,8 +17,12 @@ public class DemoController {
     @AutowireProvider
     private NumberProcessor numberProcessorProvider;
 
+    @AutowireProvider
+    private NumberFormatter numberFormatterProvider;
+
     @RequestMapping("/demo")
     public String demo(Integer num) {
-        return "" + numberProcessorProvider.processInt(num);
+        Integer i = numberProcessorProvider.processInt(num);
+        return numberFormatterProvider.format(i);
     }
 }
