@@ -16,8 +16,8 @@ public class NumberFormatterProvider extends ExtensionPointProvider {
     @Override
     protected Combinator tree() {
         return chain(
-                extOfClass(OddNumberProcessor.class),
-                extOfClass(EvenNumberProcessor.class)
+                extOfExtSpaceName("yanwtedemo.services.impl.odd"),
+                extOfExtSpaceName("yanwtedemo.services.impl.even")
         );
     }
 }
